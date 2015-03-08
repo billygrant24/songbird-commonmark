@@ -1,0 +1,19 @@
+{
+    "name": "williamgb/songbird-commonmark",
+    "description": "CommonMark service provider for Songbird",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "William Grant-Buckley",
+            "email": "ahoy@williambuckley.co.uk"
+        }
+    ],
+    "require": {
+        "league/commonmark": "0.7.*"
+    },
+    "autoload": {
+        "psr-4": {
+            "Songbird\\Package\\Plates\\": "src/"
+        }
+    }
+}
