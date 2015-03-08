@@ -1,5 +1,5 @@
 <?php
-namespace Songbird\Package\Markdown;
+namespace Songbird\Package\CommonMark;
 
 use League\Container\ServiceProvider;
 
@@ -25,6 +25,6 @@ class MarkdownServiceProvider extends ServiceProvider
         $app = $this->getContainer();
 
         $app->add('League\CommonMark\CommonMarkConverter');
-        $app->add('App.Document.Transformer', $app->resolve('Songbird\Package\Markdown\Transformer'));
+        $app->add('App.Document.Transformer', $app->resolve('Songbird\Package\CommonMark\Transformer'));
     }
 }

@@ -1,5 +1,5 @@
 <?php
-namespace Songbird\Package\Markdown;
+namespace Songbird\Package\CommonMark;
 
 use JamesMoss\Flywheel\DocumentInterface;
 use League\CommonMark\CommonMarkConverter;
