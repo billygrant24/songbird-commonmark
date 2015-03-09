@@ -1,8 +1,8 @@
 <?php
 namespace Songbird\Package\CommonMark;
 
-use JamesMoss\Flywheel\DocumentInterface;
 use League\CommonMark\CommonMarkConverter;
+use Songbird\Document\DocumentInterface;
 
 class Transformer
 {
@@ -20,9 +20,9 @@ class Transformer
     }
 
     /**
-     * @param \JamesMoss\Flywheel\DocumentInterface $document
+     * @param \Songbird\Document\DocumentInterface $document
      *
-     * @return \JamesMoss\Flywheel\DocumentInterface
+     * @return \Songbird\Document\DocumentInterface
      */
     public function apply(DocumentInterface $document)
     {

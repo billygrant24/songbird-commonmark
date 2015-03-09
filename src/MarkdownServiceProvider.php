@@ -1,30 +1,24 @@
 <?php
 namespace Songbird\Package\CommonMark;
 
-use League\Container\ServiceProvider;
+use Songbird\PackageProviderAbstract;
 
-class MarkdownServiceProvider extends ServiceProvider
+class MarkdownServiceProvider extends PackageProviderAbstract
 {
     /**
      * @var array
      */
     protected $provides = [
-        'App.Document.Transformer',
+        'Document.Transformer',
         'League\CommonMark\CommonMarkConverter',
     ];
 
     /**
-     * Use the register method to register items with the container via the
-     * protected $this->container property or the `getContainer` method
-     * from the ContainerAwareTrait.
-     *
-     * @return void
+     * @param $app
      */
-    public function register()
+    public function registerPackage($app)
     {
-        $app = $this->getContainer();
-
         $app->add('League\CommonMark\CommonMarkConverter');
-        $app->add('App.Document.Transformer', $app->resolve('Songbird\Package\CommonMark\Transformer'));
+        $app->add('Document.Transformer', $app->resolve('Songbird\Package\CommonMark\Transformer'));
     }
 }
