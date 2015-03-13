@@ -24,9 +24,9 @@ class Transformer
      *
      * @return \Songbird\Document\DocumentInterface
      */
-    public function apply(DocumentInterface $document)
+    public function apply($document)
     {
-        $document->body = $this->markdown->convertToHtml($document->body);
+        $document['body'] = $this->markdown->convertToHtml($document['body']);
 
         return $document;
     }
