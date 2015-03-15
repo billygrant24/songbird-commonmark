@@ -17,6 +17,8 @@ class CommonMarkProvider extends PackageProviderAbstract
 
     /**
      * @param \League\Container\ContainerInterface $app
+     *
+     * @return mixed|void
      */
     public function registerPackage(ContainerInterface $app)
     {
