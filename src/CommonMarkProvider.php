@@ -1,40 +1,19 @@
 <?php
 namespace Songbird\Package\CommonMark;
 
-use League\CommonMark\CommonMarkConverter;
-use League\Container\ContainerInterface;
-use Songbird\Event\Event;
+use League\Event\Emitter;
 use Songbird\PackageProviderAbstract;
 
 class CommonMarkProvider extends PackageProviderAbstract
 {
     /**
-     * @var array
-     */
-    protected $provides = [
-        'CommmonMark',
-    ];
-
-    /**
-     * @param \League\Container\ContainerInterface $app
+     * Inform ContentEvent of our ModifyContentListener in order to transform the content body attribute
+     * from Markdown to HTML.
      *
-     * @return mixed|void
+     * @param \League\Event\Emitter $event
      */
-    public function registerPackage(ContainerInterface $app)
+    protected function registerEventListeners(Emitter $event)
     {
-        $app->add('CommonMark', new CommonMarkConverter());
-    }
-
-    /**
-     * @param \League\Container\ContainerInterface $app
-     * @param \Songbird\Event\Event                $event
-     */
-    protected function registerEventListeners(ContainerInterface $app, Event $event)
-    {
-        $event->addListener('PrepareDocument', function ($event, $args) use ($app) {
-            $md = $app->get('CommonMark');
-
-            $args['document']['body'] = $md->convertToHtml($args['document']['body']);
-        });
+        $event->addListener('ContentEvent', new ContentListener());
     }
 }
